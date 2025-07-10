@@ -4,14 +4,7 @@
 
     <test name="Test Web" parallel="false" preserve-order="true">
         <classes>
-            <!--<class name="testcases.login.LoginTest"></class>
-            <class name="testcases.patient.PatientMarcomFilterTest"></class>
-            <class name="testcases.patient.PatientSearchBarTest"></class>
-            <class name="testcases.patient.PatientTncFilterTest"></class>
-            <class name="testcases.cdmstages.CdmStagesSearchTest"></class>
-            <class name="testcases.login.NavigationTest"></class>
-            <class name="testcases.profile.ProfileLogOutTest"></class>-->
-<!--            <class name="testcases.imb.OnboardingTest"></class>-->
+            <class name="testcases.Login.LoginTest"></class>
         </classes>
     </test>
 </suite>

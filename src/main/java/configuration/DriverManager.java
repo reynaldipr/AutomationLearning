@@ -11,6 +11,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
+import java.util.HashMap;
 
 public class DriverManager<T> {
     private static ThreadLocal<DriverManager> instance = new ThreadLocal<>();
@@ -35,6 +36,15 @@ public class DriverManager<T> {
         switch (driverType) {
             case "Chrome":
                 chromeOptions.addArguments("start-maximized");
+
+                // Disable Chrome's password manager and other automation detection
+                chromeOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+                chromeOptions.setExperimentalOption("prefs", new HashMap<String, Object>() {{
+                    put("credentials_enable_service", false);
+                    put("profile.password_manager_enabled", false);
+                }});
+                chromeOptions.addArguments("--incognito");
+
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver(chromeOptions);
                 this.driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
