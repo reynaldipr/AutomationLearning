@@ -14,6 +14,7 @@ import org.testng.Reporter;
 import org.testng.annotations.*;
 import pom.DashboardPage;
 import pom.LoginPage;
+import pom.NavigationPane;
 import utilities.PrintUtilities;
 
 import java.io.IOException;
@@ -32,6 +33,7 @@ public class BaseTest {
 
     protected LoginPage loginPage;
     protected DashboardPage dashboardPage;
+    protected NavigationPane navigationPane;
 
     @BeforeTest
     public void setup() {
@@ -67,6 +69,7 @@ public class BaseTest {
 
         loginPage = new LoginPage();
         dashboardPage = new DashboardPage();
+        navigationPane = new NavigationPane();
 
         driver.get(DefaultSettings.WEB_URL);
         test = extent.createTest(itr.getInstance().getClass().getSimpleName());

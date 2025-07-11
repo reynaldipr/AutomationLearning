@@ -1,12 +1,9 @@
 package testcases.Login;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 import testcases.BaseTest;
 
 public class LoginTest extends BaseTest {
-    private static final Logger log = LoggerFactory.getLogger(LoginTest.class);
     protected String username = "standard_user";
     protected String password = "secret_sauce";
     protected String invalidUsername = "AAA";

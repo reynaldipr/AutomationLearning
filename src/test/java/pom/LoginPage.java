@@ -7,6 +7,7 @@ public class LoginPage extends BasePage {
     protected String textAreaPassword = "password";
     protected String buttonContinue = "login-button";
     protected String errorInvalidCredential = "//div[@class='error-message-container error']";
+    protected String loginLogo = "//div[@class='login_logo']";
 
     public void verifyLoginButton() {
         validateElementShow(By.id(buttonContinue));
@@ -34,5 +35,9 @@ public class LoginPage extends BasePage {
 
     public void clearPassword() {
         clearEditTextV2(By.id(textAreaPassword));
+    }
+
+    public void verifyLoginLogo() {
+        validateElementShow(By.xpath(loginLogo));
     }
 }
