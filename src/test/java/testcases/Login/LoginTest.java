@@ -6,7 +6,7 @@ import testcases.BaseTest;
 public class LoginTest extends BaseTest {
     protected String username = "standard_user";
     protected String password = "secret_sauce";
-    protected String invalidUsername = "AAA";
+    protected String invalidUsername = "AAAAAAAAA";
 
     @Test(priority = 2)
     public void LoginValid(){
@@ -17,8 +17,8 @@ public class LoginTest extends BaseTest {
         loginPage.inputPassword(password);
         loginPage.wait(1);
         loginPage.clickLoginButton();
-        dashboardPage.verifyLoginProcess();
-        dashboardPage.wait(2);
+        homePage.verifyLoginProcess();
+        homePage.wait(2);
     }
 
     @Test(priority = 1)

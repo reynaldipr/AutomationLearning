@@ -12,7 +12,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.*;
-import pom.DashboardPage;
+import pom.CheckoutPage;
+import pom.HomePage;
 import pom.LoginPage;
 import pom.NavigationPane;
 import utilities.PrintUtilities;
@@ -32,8 +33,9 @@ public class BaseTest {
     protected static ExtentTest node;
 
     protected LoginPage loginPage;
-    protected DashboardPage dashboardPage;
+    protected HomePage homePage;
     protected NavigationPane navigationPane;
+    protected CheckoutPage checkoutPage;
 
     @BeforeTest
     public void setup() {
@@ -68,8 +70,9 @@ public class BaseTest {
         ITestResult itr = Reporter.getCurrentTestResult();
 
         loginPage = new LoginPage();
-        dashboardPage = new DashboardPage();
+        homePage = new HomePage();
         navigationPane = new NavigationPane();
+        checkoutPage = new CheckoutPage();
 
         driver.get(DefaultSettings.WEB_URL);
         test = extent.createTest(itr.getInstance().getClass().getSimpleName());
