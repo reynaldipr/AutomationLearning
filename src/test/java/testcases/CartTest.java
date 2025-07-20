@@ -1,14 +1,14 @@
-package testcases.Login;
+package testcases;
 
 import org.testng.annotations.Test;
-import testcases.BaseTest;
 
-public class LogoutTest extends BaseTest {
+public class CartTest extends BaseTest{
+
     protected String username = "standard_user";
     protected String password = "secret_sauce";
 
     @Test
-    public void Logout(){
+    public void ClickCart(){
         loginPage.verifyLoginButton();
         loginPage.wait(1);
         loginPage.inputUserName(username);
@@ -17,11 +17,14 @@ public class LogoutTest extends BaseTest {
         loginPage.wait(1);
         loginPage.clickLoginButton();
         homePage.verifyLoginProcess();
-        homePage.wait(1);
-        navigationPane.clickMenuButton();
-        navigationPane.wait(1);
-        navigationPane.clickLogoutButton();
-        loginPage.verifyLoginButton();
-        loginPage.wait(1);
+        homePage.wait(2);
+        homePage.verifyCartIcon();
+        homePage.wait(2);
+        homePage.clickCartIcon();
+        homePage.wait(2);
+        checkoutPage.verifyCartTitle();
+        checkoutPage.wait(1);
+        checkoutPage.clickButtonContinueShopping();
+        homePage.verifyLoginProcess();
     }
 }
