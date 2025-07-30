@@ -21,6 +21,9 @@ import utilities.PrintUtilities;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+import utilities.FFmpegScreenRecorder;
+import utilities.FileNameUtil;
+
 public class BaseTest {
     protected static ExtentReports extent = new ExtentReports();
     protected static WebDriver driver;
@@ -36,6 +39,8 @@ public class BaseTest {
     protected HomePage homePage;
     protected NavigationPane navigationPane;
     protected CheckoutPage checkoutPage;
+
+    FFmpegScreenRecorder recorder = new FFmpegScreenRecorder();
 
     @BeforeTest
     public void setup() {
@@ -85,16 +90,22 @@ public class BaseTest {
         System.out.println("=======================");
     }
 
-    @BeforeMethod
+    /*@BeforeMethod
     public void startTestStep(Method method) {
         String methodName = method.getName();
         System.out.println("-----------------------");
         System.out.println("Test " + methodName + " Start");
         System.out.println("-----------------------");
         node = test.createNode(methodName);
+    }*/
+    @BeforeMethod
+    public void setUp(Method method) throws IOException {
+        String filename = FileNameUtil.generateFileName(method.getName());
+        recorder.startRecording(filename);
     }
 
-    @AfterMethod
+
+    /*@AfterMethod
     public void finishTestStep(ITestResult result) throws IOException {
         String methodName = result.getMethod().getMethodName();
         String pathCapture = PrintUtilities.screenCapture(methodName);
@@ -119,5 +130,10 @@ public class BaseTest {
         }
 
         System.out.println("-----------------------");
+    }*/
+    @AfterMethod
+    public void tearDown() {
+        recorder.stopRecording();
+        // driver.quit() di sini
     }
 }
